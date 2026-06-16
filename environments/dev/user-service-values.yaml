@@ -1,0 +1,5 @@
+replicaCount: 1
+
+image:
+  repository: jainambarbhaya/user-service
+  tag: "1"
