@@ -2,4 +2,8 @@ replicaCount: 1
 
 image:
   repository: jainambarbhaya/user-service
-  tag: "v1"
+  tag: v1
+
+service:
+  type: ClusterIP
+  port: 8000
