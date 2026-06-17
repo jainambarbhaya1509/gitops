@@ -1,5 +1,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
+
 metadata:
   name: user-service
   namespace: argocd
@@ -11,9 +12,10 @@ spec:
           - env: dev
             namespace: dev
             valuesFile: values-dev.yaml
-          # - env: prod
-          #   namespace: prod
-          #   valuesFile: values-prod.yaml
+
+          - env: prod
+            namespace: prod
+            valuesFile: values-prod.yaml
 
   template:
     metadata:
@@ -26,6 +28,7 @@ spec:
         repoURL: https://github.com/jainambarbhaya1509/gitops.git
         targetRevision: main
         path: charts/user-service
+
         helm:
           valueFiles:
             - "{{valuesFile}}"
@@ -38,3 +41,6 @@ spec:
         automated:
           prune: true
           selfHeal: true
+
+        syncOptions:
+          - CreateNamespace=true

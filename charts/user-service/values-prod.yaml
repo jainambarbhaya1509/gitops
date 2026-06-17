@@ -1,0 +1,10 @@
+replicaCount: 3
+
+image:
+  repository: jainambarbhaya15/user-service
+  tag: v1
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8000
