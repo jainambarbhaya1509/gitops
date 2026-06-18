@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: user-service
+  repository: jainambarbhaya15/user-service
   tag: '11'
   pullPolicy: IfNotPresent
 
