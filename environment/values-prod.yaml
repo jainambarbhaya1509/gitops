@@ -25,4 +25,4 @@ autoscaling:
 
   targetCPUUtilizationPercentage: 80
 
-
+dockerConfigJson: e30=

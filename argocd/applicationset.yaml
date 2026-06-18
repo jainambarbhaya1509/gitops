@@ -26,9 +26,19 @@ spec:
           valueFiles:
             - ../../{{valuesFile}}
       destination:
-        # FIXED: Changed from https://default.svc to the correct internal server URL
         server: 'https://kubernetes.default.svc'
         namespace: '{{namespace}}'
+      
+      # FIXED: Added to stop ArgoCD from tracking the ESO generated secret details
+      ignoreDifferences:
+        - group: ""
+          kind: Secret
+          name: dockerhub-secret-shared
+          jsonPointers:
+            - /data
+            - /metadata/annotations
+            - /metadata/labels
+
       syncPolicy:
         automated:
           prune: true
