@@ -1,0 +1,26 @@
+repicaCount: 1
+
+image:
+  repository: jainambarbhaya15/user-service
+  tag: '15'
+
+imagePullSecrets:
+  - name: dockerhub-secret-dev
+
+ingress:
+  enabled: true
+  className: nginx
+
+  hosts:
+    - hosts: dev.userservice.local
+
+      paths:
+        - path: /
+          pathType: Prefix
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+
+    targetCPUUtilizationPercentage: 70

@@ -11,11 +11,11 @@ spec:
         elements:
           - env: dev
             namespace: dev
-            valuesFile: values-dev.yaml
+            valuesFile: environment/values-dev.yaml
 
           - env: prod
             namespace: prod
-            valuesFile: values-prod.yaml
+            valuesFile: environment/values-prod.yaml
 
   template:
     metadata:
