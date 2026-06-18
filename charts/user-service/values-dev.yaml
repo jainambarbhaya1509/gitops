@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: user-service
   tag: v1
-  pullPolicy: Never
+  pullPolicy: Always
 
 service:
   type: ClusterIP
