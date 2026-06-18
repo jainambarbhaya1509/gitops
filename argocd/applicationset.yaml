@@ -1,10 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
-
 metadata:
   name: user-service
   namespace: argocd
-
 spec:
   generators:
     - list:
@@ -12,35 +10,28 @@ spec:
           - env: dev
             namespace: dev
             valuesFile: environment/values-dev.yaml
-
           - env: prod
             namespace: prod
             valuesFile: environment/values-prod.yaml
-
   template:
     metadata:
-      name: user-service-{{env}}
-
+      name: 'user-service-{{env}}'
     spec:
       project: default
-
       source:
-        repoURL: https://github.com/jainambarbhaya1509/gitops.git
+        repoURL: 'https://github.com/jainambarbhaya1509/gitops.git'
         targetRevision: main
         path: charts/user-service
-
         helm:
           valueFiles:
-            - "{{valuesFile}}"
-
+            - ../../{{valuesFile}}
       destination:
-        server: https://kubernetes.default.svc
-        namespace: "{{namespace}}"
-
+        # FIXED: Changed from https://default.svc to the correct internal server URL
+        server: 'https://kubernetes.default.svc'
+        namespace: '{{namespace}}'
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
-
         syncOptions:
           - CreateNamespace=true

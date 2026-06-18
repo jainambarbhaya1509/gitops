@@ -5,7 +5,7 @@ image:
   tag: "15"
 
 imagePullSecrets:
-  - name: dockerhub-secret-prod
+  - name: dockerhub-secret-shared
 
 ingress:
   enabled: true
@@ -24,3 +24,5 @@ autoscaling:
   maxReplicas: 10
 
   targetCPUUtilizationPercentage: 80
+
+
