@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: user-service
-  tag: '8'
+  tag: 11
   pullPolicy: Always
 
 service:
