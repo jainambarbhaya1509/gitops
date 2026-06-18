@@ -24,5 +24,5 @@ spec:
 
           ports:
             - containerPort: 8000
-      imagePullSecrets:
-          - name: dockerhub-secret
+      # imagePullSecrets:
+      #     - name: dockerhub-secret
